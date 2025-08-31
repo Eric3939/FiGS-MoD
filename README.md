@@ -98,7 +98,7 @@ A0AV96   AAAVIP   500    505  6       2.1140273005497536  0.01503 1.332     0.63
 
 
 ## Paper code repository
-Additional scripts used in the paper are provided in the `repostory/' folder, including those used to compute the four feature scores (PLM, disorder, solvent accessibility, conservation).
+Additional scripts used in the paper are provided in the `repostory/` folder, including those used to compute the four feature scores (PLM, disorder, solvent accessibility, conservation).
 
 
 ## Citation
