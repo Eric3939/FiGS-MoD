@@ -19,7 +19,7 @@ Short linear motifs (SLiMs) are short sequence patterns that mediate transient p
 
 ## Running the algorithm
 Before you run:<br>
-  We call a hub protein (a protein that interacts with several other proteins) a linear motif binding domain protein (LMBD protein). The algorithm (method 1 and 3) finds all the interacting proteins of a LMBD protein and search for a motif within them. We call these interacting proteins a LMBD protein network. The protein-protein interactions are obtained from BioGRID, filtered as described in our paper (restricted to low-throughput data or interactions supported by ≥2 sources).
+  We call a hub protein (a protein that interacts with several other proteins) a linear motif binding domain protein (**LMBD protein**). The algorithm (method 1 and 3) finds all the interacting proteins of a LMBD protein and search for a motif within them. We call these interacting proteins a **LMBD protein network**. The protein-protein interactions are obtained from BioGRID, filtered as described in our paper (restricted to low-throughput data or interactions supported by ≥2 sources).
 
 
 ### Step 1 - Clone repository and install dependencies
