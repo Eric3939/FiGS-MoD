@@ -1,6 +1,6 @@
 # FiGS_MoD
 
-**FiGS-MoD: Feature-informed Gibbs Sampling for Motif Discovery Algorithm, towards Applications in Mapping Human Signaling Networks **
+**FiGS-MoD: Feature-informed Gibbs Sampling for Motif Discovery Algorithm, towards Applications in Mapping Human Signaling Networks**
 Yitao (Eric) Sun, Yu (Brandon) Xia, Jasmin Coulombe-Huntington,
 Department of Bioengineering, McGill University
 
