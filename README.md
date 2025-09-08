@@ -1,6 +1,6 @@
-# HIGS_MoD
+# FiGS_MoD
 
-**HIGS-MoD: HMM-Integrated Gibbs Sampling Motif Discovery Algorithm, towards Applications in Mapping Human Signaling Networks**
+**FiGS-MoD: Feature-informed Gibbs Sampling for Motif Discovery Algorithm, towards Applications in Mapping Human Signaling Networks **
 Yitao (Eric) Sun, Yu (Brandon) Xia, Jasmin Coulombe-Huntington,
 Department of Bioengineering, McGill University
 
@@ -13,7 +13,7 @@ Department of Bioengineering, McGill University
 
 ## Abstract
 Motivation: Short linear motifs (SLiMs) are short sequence patterns that mediate transient protein-protein interactions, often within disordered regions of proteins. SLiMs play central roles in signaling, trafficking, and post-translational regulation, but their short length and low complexity make them difficult to identify both experimentally and computationally. Since the release of motif discovery tools like MEME Suite, the availability of protein-protein interaction data (e.g., BioGRID) has increased by more than five-fold, and recent advances in machine learning offer new opportunities for large-scale, high-resolution motif discovery. 
-Results: We present HIGS-MoD, a hidden Markov model (HMM)-based Gibbs sampling SLiM discovery algorithm with two key innovations: (i) replacing traditional position-specific scoring matrices (PSSM) with HMMs to accommodate insertions and deletions, and (ii) incorporating biased sampling informed by residue-level features, including Protein Language Model (PLM) embeddings, AlphaFold2-derived disorder and solvent accessibility, and evolutionary conservation. On the Eukaryotic Linear Motif (ELM) database, our method achieved significantly stronger recovery of known motifs compared with MEME. We further validated predictions against PhosphoGRID and illustrated applicability through three case studies, highlighting biological relevance and generalizability.
+Results: We present FiGS-MoD, a hidden Markov model (HMM)-based Gibbs sampling SLiM discovery algorithm with two key innovations: (i) replacing traditional position-specific scoring matrices (PSSM) with HMMs to accommodate insertions and deletions, and (ii) incorporating biased sampling informed by residue-level features, including Protein Language Model (PLM) embeddings, AlphaFold2-derived disorder and solvent accessibility, and evolutionary conservation. On the Eukaryotic Linear Motif (ELM) database, our method achieved significantly stronger recovery of known motifs compared with MEME. We further validated predictions against PhosphoGRID and illustrated applicability through three case studies, highlighting biological relevance and generalizability.
 
 <img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/debcdcef-579a-43c2-a7ad-ec1cf1b0d472" />
 
