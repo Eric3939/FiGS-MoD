@@ -81,7 +81,7 @@ python submit_slurm.py [biogrid_path] [results_folder] [dataframe_path]
 
 ### Step 4 - Results
 Each run produces one pickle file per LMBD protein network, saved in the user-specified output folder. For a full proteome run (method 3), the algorithm will therefore generate one pickle file for each LMBD protein network.  
-To aggregate results, use the script `result_table.py` (in the `script/` folder) to convert all pickle files into a single table listing the discovered motifs.
+To aggregate results, use the script `results_table.py` (in the `script/` folder) to convert all pickle files into a single table listing the discovered motifs.
 
 
 ## Predicted Motif Database
