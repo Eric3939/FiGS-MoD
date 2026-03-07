@@ -3,3 +3,4 @@ pandas
 pomegranate==0.15.0
 networkx
 biopython
+tqdm
