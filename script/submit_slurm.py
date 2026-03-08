@@ -6,7 +6,7 @@ import os
 import argparse
 
 
-def submit(df, center):
+def submit(df, center, results_path):
 
     # estimate time
     size = df.at[center, 'size']
@@ -27,7 +27,7 @@ def submit(df, center):
 module load python
 
 echo "{center}"
-python search.py {center} results/{center}.pickle
+python search.py {center} {results_path}/{center}.pickle
 """
     # Save to file
     bash_name = f'{center}.sh'
@@ -114,7 +114,7 @@ def check(df, results_path):
     return df
 
 
-def refill(df, max_jobs):
+def refill(df, max_jobs, results_path):
     # count how many in sq now
     n_in_sq = sum(df['in_sq'])
     print(f'Jobs in sq currently: {n_in_sq}')
@@ -127,7 +127,7 @@ def refill(df, max_jobs):
             break
         if not row['submitted'] and not row['result']:
             try:
-                df = submit(df=df, center=center)
+                df = submit(df=df, center=center, results_path=results_path)
                 df.at[center, 'submitted'] = True
                 df.at[center, 'in_sq'] = True        
                 n += 1
@@ -157,14 +157,21 @@ def main():
 
     df_path = args.df_path
     biogrid_path = args.biogrid_path
-    df = initialize(biogrid_path=biogrid_path)  # Comment out after first time running this script
     
-    with open(df_path, 'rb') as f:
-        df = pickle.load(f)
+    if os.path.exists(df_path):
+        with open(df_path, 'rb') as f:
+            df = pickle.load(f)
+        print("Loaded existing dataframe")
+    else:
+        df = initialize(biogrid_path=biogrid_path)
+        with open(df_path, 'wb') as f:
+            pickle.dump(df, f)
+        print("Initialized new dataframe")
 
-    results_path = args.results_path
+    results_path = args.results_folder
+    os.makedirs(results_path, exist_ok=True)
     df = check(df=df, results_path=results_path)
-    df = refill(df=df, max_jobs=950)    
+    df = refill(df=df, max_jobs=950, results_path=results_path)
     print(df)
 
     with open(df_path, 'wb') as f:
@@ -173,6 +180,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
