@@ -1,7 +1,9 @@
 # FiGS_MoD
 
 **FiGS-MoD: Feature-informed Gibbs Sampling for Motif Discovery Algorithm, towards Applications in Mapping Human Signaling Networks**
-Yitao (Eric) Sun, Yu (Brandon) Xia, Jasmin Coulombe-Huntington,
+
+Yitao (Eric) Sun, Yu (Brandon) Xia, Jasmin Coulombe-Huntington
+
 Department of Bioengineering, McGill University
 
 ## Table of Contents
@@ -12,7 +14,7 @@ Department of Bioengineering, McGill University
 - [Citation](#citation)
 
 ## Abstract
-Motivation: Short linear motifs (SLiMs) are short sequence patterns that mediate transient protein-protein interactions, often within disordered regions of proteins. SLiMs play central roles in signaling, trafficking, and post-translational regulation, but their short length and low complexity make them difficult to identify both experimentally and computationally. Since the release of motif discovery tools like MEME Suite, the availability of protein-protein interaction data (e.g., BioGRID) has increased by more than five-fold, and recent advances in machine learning offer new opportunities for large-scale, high-resolution motif discovery. 
+Motivation: Short linear motifs (SLiMs) are short sequence patterns that mediate transient protein-protein interactions, often within disordered regions of proteins. SLiMs play central roles in signaling, trafficking, and post-translational regulation, but their short length and low complexity make them difficult to identify both experimentally and computationally. Since the release of motif discovery tools like MEME Suite, the availability of protein-protein interaction data (e.g., BioGRID) has increased by more than five-fold, and recent advances in machine learning offer new opportunities for large-scale, high-resolution motif discovery. <br>
 Results: We present FiGS-MoD, a hidden Markov model (HMM)-based Gibbs sampling SLiM discovery algorithm with two key innovations: (i) replacing traditional position-specific scoring matrices (PSSM) with HMMs to accommodate insertions and deletions, and (ii) incorporating biased sampling informed by residue-level features, including Protein Language Model (PLM) embeddings, AlphaFold2-derived disorder and solvent accessibility, and evolutionary conservation. On the Eukaryotic Linear Motif (ELM) database, our method achieved significantly stronger recovery of known motifs compared with MEME. We further validated predictions against PhosphoGRID and illustrated applicability through three case studies, highlighting biological relevance and generalizability.
 
 <img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/debcdcef-579a-43c2-a7ad-ec1cf1b0d472" />
@@ -39,7 +41,7 @@ Install the package (this resolves all import dependecies and paths automaticall
 pip install -e .
 ```
 
-**Note**: `pomegranate==0.15.0` is a strict requirement, as the latest version 1.0.0 does not support HMM hidden states. Earlier versions may work but have not been tested.
+**Note**: `pomegranate==0.15.0` is a strict requirement, as the latest version 1.0.0 does not support HMM hidden states. Earlier versions may work but have not been tested.<br>
 If dependencies are not automatically installed, then install them manually from `requirements.txt`. It is recommended to start with `pomegranate==0.15.0` and make other packages compatible to it.
 
 ### Step 3 - Data download
@@ -57,13 +59,15 @@ The algorithm can be run at three different scales:
 
 
 **1) User defined proteins**
+
 Prepare a text file with one UniProt ID per line.
 ```sh
 python scripts/run_users_proteins.py <proteins_file> [options]
 ```
-In this mode, the user specifies a custom set of proteins (via UniProt IDs) that are hypothesized to share a common motif. The algorithm retrieves these proteins from our pre-annotated database.
+In this mode, the user specifies a custom set of proteins (via UniProt IDs) that are hypothesized to share a common motif. The algorithm retrieves these proteins from our pre-annotated database.<br>
 This mode can also be used to analyze a single LMBD protein network by providing the interacting proteins of that LMBD protein as input.
-Note: Our protein database contains 20,419 human proteins from UniProt. Proteins not included in our database are not currently supported.
+
+**Note**: Our protein database contains 20,419 human proteins from UniProt. Proteins not included in our database are not currently supported.
 
 **2) Full proteome (all LMBD networks)**
 ```sh
@@ -78,7 +82,7 @@ python scripts/submit_slurm.py [biogrid_path] [results_folder] [dataframe_path]
 ```
 
 ### Step 5 - Results
-Each run produces one pickle file per LMBD protein network, saved in the user-specified output folder. For a full proteome run (method 3), the algorithm will therefore generate one pickle file for each LMBD protein network.  
+Each run produces one pickle file per LMBD protein network, saved in the user-specified output folder. For a full proteome run (method 3), the algorithm will therefore generate one pickle file for each LMBD protein network. <br>
 To aggregate results, use the script `scripts/results_table.py` to convert all pickle files into a single table listing the discovered motifs.
 
 
@@ -102,5 +106,6 @@ Additional scripts used in the paper are provided in the `repository/` folder, i
 
 ## Citation
 If you use this repository in your research, please cite our paper:
-Sun, Y., Xia, Y., & Coulombe-Huntington, J. (2025). FiGS-MoD: Feature-informed Gibbs Sampling Motif Discovery Algorithm for Mapping Human Signaling Networks. bioRxiv, 2025-09. 
+
+Sun, Y., Xia, Y., & Coulombe-Huntington, J. (2025). FiGS-MoD: Feature-informed Gibbs Sampling Motif Discovery Algorithm for Mapping Human Signaling Networks. bioRxiv, 2025-09. <br>
 https://doi.org/10.1101/2025.09.26.678911
