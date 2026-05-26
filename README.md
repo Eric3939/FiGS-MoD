@@ -26,73 +26,64 @@ Before you run:<br>
 ### Step 1 - Clone repository and install dependencies
 Clone this repository to your local machine:
 ```sh
-git clone https://github.com/Eric3939/linear_motif.git
-cd linear_motif
+git clone https://github.com/Eric3939/FiGS-MoD.git
+cd FiGS-MoD
 ```
-Install the required packages. 
-```sh
-pip install -r requirements.txt
-```
-**Note**: `pomegranate==0.15.0` is a strict requirement, as the latest version 1.0.0 does not support HMM hidden states. Earlier versions may work but have not been tested.
 
-### Step 2 - Download data and install the package
+### Step 2 - Install the package
 
-First install the package (this resolves all import paths automatically):
+It is recommended to use python=3.10 for this project (compatible with pomegranate==0.15.0)
+
+Install the package (this resolves all import dependecies and paths automatically):
 ```bash
 pip install -e .
 ```
 
-Then download these files from Google Drive and place them in the `data/raw/` directory:
+**Note**: `pomegranate==0.15.0` is a strict requirement, as the latest version 1.0.0 does not support HMM hidden states. Earlier versions may work but have not been tested.
+If dependencies are not automatically installed, then install them manually from `requirements.txt`. It is recommended to start with `pomegranate==0.15.0` and make other packages compatible to it.
+
+### Step 3 - Data download
+
+Download these files from Google Drive and place them in the `data/raw/` directory:
 https://drive.google.com/drive/folders/1472iWG8U6g5XaJBz2bdI_UI-kOFbpU-n?usp=sharing
 
 - `protein_database_1.pickle` → save to `data/raw/protein_database_1.pickle`
 - `biogrid_net.gpickle` → save to `data/raw/biogrid_net.gpickle`
 
-### Step 3 - Running models
+### Step 4 - Running models
 The algorithm can be run at three different scales:
-1. a single LMBD protein network in BioGRID
-2. a user-defined set of proteins
-3. all LMBD protein networks in BioGRID
+1. a user-defined set of proteins
+2. all LMBD protein networks in BioGRID
 
-**1) Single LMBD protein network (BioGRID proteins)**
-```sh
-cd script/
-python search.py [LMBD_protein] [output_directory]
-```
-In this mode, the user provides only a single LMBD protein. The algorithm retrieves all interacting partners of the LMBD protein from BioGRID and searches for motifs within them (a LMBD protein network). All proteins are pre-annotated in our database. This is the simplest way to run the algorithm, but it does not allow customization of the input set.
 
-**2) User defined proteins**
-```sh
-cd script/
-```
+**1) User defined proteins**
 Prepare a text file with one UniProt ID per line.
 ```sh
-python run_users_proteins.py [proteins_file_path]
+python scripts/run_users_proteins.py <proteins_file> [options]
 ```
 In this mode, the user specifies a custom set of proteins (via UniProt IDs) that are hypothesized to share a common motif. The algorithm retrieves these proteins from our pre-annotated database.
-Note: Our protein database contains 20419 human proteins from UniProt. Proteins not included in our database are not currently supported.
+This mode can also be used to analyze a single LMBD protein network by providing the interacting proteins of that LMBD protein as input.
+Note: Our protein database contains 20,419 human proteins from UniProt. Proteins not included in our database are not currently supported.
 
-**3) Full proteome (all LMBD networks)**
+**2) Full proteome (all LMBD networks)**
 ```sh
-cd script/
-python run_proteome.py [biogrid_path] [output_folder]
+python scripts/run_proteome.py [output_folder]
 ```
 This mode reproduces the results described in our paper by running motif discovery across all LMBD protein networks in BioGRID. Parameters can be adjusted by modifying `search.py`.
 
 **(Optional) High-Performance Computing with SLURM**
 If user is using a High Performance Computing (HPC) system with SLURM scheduler, we provide a helper script to submit motif-search jobs automatically (adaptation to local pipelines may be required):
 ```sh
-cd script/
-python submit_slurm.py [biogrid_path] [results_folder] [dataframe_path]
+python scripts/submit_slurm.py [biogrid_path] [results_folder] [dataframe_path]
 ```
 
-### Step 4 - Results
+### Step 5 - Results
 Each run produces one pickle file per LMBD protein network, saved in the user-specified output folder. For a full proteome run (method 3), the algorithm will therefore generate one pickle file for each LMBD protein network.  
-To aggregate results, use the script `results_table.py` (in the `script/` folder) to convert all pickle files into a single table listing the discovered motifs.
+To aggregate results, use the script `scripts/results_table.py` to convert all pickle files into a single table listing the discovered motifs.
 
 
 ## Predicted Motif Database
-We applied our algorithm to the entire human proteome as described in the paper, generating 221,840 predicted motifs. The results are provided in `results_table.csv`.
+We applied our algorithm to the entire human proteome as described in the paper, generating 221,840 predicted motifs. The results are provided in `results_table_7k_20260214.csv` and `results_table_11k_20260307`.
 
 Example records from the database:
 
@@ -111,3 +102,5 @@ Additional scripts used in the paper are provided in the `repository/` folder, i
 
 ## Citation
 If you use this repository in your research, please cite our paper:
+Sun, Y., Xia, Y., & Coulombe-Huntington, J. (2025). FiGS-MoD: Feature-informed Gibbs Sampling Motif Discovery Algorithm for Mapping Human Signaling Networks. bioRxiv, 2025-09. 
+https://doi.org/10.1101/2025.09.26.678911

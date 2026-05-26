@@ -7,6 +7,7 @@ from pathlib import Path
 import pandas as pd
 from figsmod.paths import PROTEIN_DB, RUNS, TABLES
 from figsmod.search import load_protein_database, compute
+from figsmod.protein import Protein
 
 
 def results_to_csv(results, input_proteins_id, output_csv_path):

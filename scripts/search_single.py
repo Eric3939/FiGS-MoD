@@ -5,6 +5,7 @@ from functools import partial
 from pathlib import Path
 from figsmod.paths import PROTEIN_DB, BIOGRID_NET, RUNS
 from figsmod.search import read_biogrid, load_protein_database, compute
+from figsmod.protein import Protein
 
 
 def main():
