@@ -2,8 +2,7 @@
 
 **FiGS-MoD: Feature-informed Gibbs Sampling for Motif Discovery Algorithm, towards Applications in Mapping Human Signaling Networks**
 
-Yitao (Eric) Sun, Yu (Brandon) Xia, Jasmin Coulombe-Huntington
-
+Yitao (Eric) Sun, Yu (Brandon) Xia, Jasmin Coulombe-Huntington<br>
 Department of Bioengineering, McGill University
 
 ## Table of Contents
@@ -34,7 +33,7 @@ cd FiGS-MoD
 
 ### Step 2 - Install the package
 
-It is recommended to use python=3.10 for this project (compatible with pomegranate==0.15.0)
+It is recommended to use python=3.10 for this project (compatible with pomegranate==0.15.0).
 
 Install the package (this resolves all import dependecies and paths automatically):
 ```bash
@@ -42,15 +41,15 @@ pip install -e .
 ```
 
 **Note**: `pomegranate==0.15.0` is a strict requirement, as the latest version 1.0.0 does not support HMM hidden states. Earlier versions may work but have not been tested.<br>
-If dependencies are not automatically installed, then install them manually from `requirements.txt`. It is recommended to start with `pomegranate==0.15.0` and make other packages compatible to it.
+If dependencies are not automatically installed, then install them manually from `requirements.txt`. It is recommended to first install `pomegranate==0.15.0` and make other packages compatible to it.
 
 ### Step 3 - Data download
 
 Download these files from Google Drive and place them in the `data/raw/` directory:
 https://drive.google.com/drive/folders/1472iWG8U6g5XaJBz2bdI_UI-kOFbpU-n?usp=sharing
 
-- `protein_database_1.pickle` → save to `data/raw/protein_database_1.pickle`
-- `biogrid_net.gpickle` → save to `data/raw/biogrid_net.gpickle`
+- `protein_database_1.pickle` → save to `FiGS-MoD/data/raw/protein_database_1.pickle`
+- `biogrid_net.gpickle` → save to `FiGS-MoD/data/raw/biogrid_net.gpickle`
 
 ### Step 4 - Running models
 The algorithm can be run at three different scales:
@@ -82,7 +81,7 @@ python scripts/submit_slurm.py [biogrid_path] [results_folder] [dataframe_path]
 ```
 
 ### Step 5 - Results
-Each run produces one pickle file per LMBD protein network, saved in the user-specified output folder. For a full proteome run (method 3), the algorithm will therefore generate one pickle file for each LMBD protein network. <br>
+Each run produces one pickle file per LMBD protein network, saved in the user-specified output folder. For a full proteome run (method 2), the algorithm will therefore generate one pickle file for each LMBD protein network. <br>
 To aggregate results, use the script `scripts/results_table.py` to convert all pickle files into a single table listing the discovered motifs.
 
 
