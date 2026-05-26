@@ -35,11 +35,18 @@ pip install -r requirements.txt
 ```
 **Note**: `pomegranate==0.15.0` is a strict requirement, as the latest version 1.0.0 does not support HMM hidden states. Earlier versions may work but have not been tested.
 
-### Step 2 - Download data
-Download these files from Google Drive and place them in the `data/` directory:
+### Step 2 - Download data and install the package
+
+First install the package (this resolves all import paths automatically):
+```bash
+pip install -e .
+```
+
+Then download these files from Google Drive and place them in the `data/raw/` directory:
 https://drive.google.com/drive/folders/1472iWG8U6g5XaJBz2bdI_UI-kOFbpU-n?usp=sharing
-- `protein_database_1.pickle`: contains all human proteins used in our study, with pre-annotated feature scores (PLM, disorder, solvent accessibility, conservation). 
-- `biogrid_net.gpickle`: contains all human PPIs from BioGRID, annotated with number of citations and throughput.
+
+- `protein_database_1.pickle` → save to `data/raw/protein_database_1.pickle`
+- `biogrid_net.gpickle` → save to `data/raw/biogrid_net.gpickle`
 
 ### Step 3 - Running models
 The algorithm can be run at three different scales:
