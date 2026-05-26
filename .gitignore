@@ -1,0 +1,33 @@
+# Data (too large for git)
+data/
+
+# Outputs
+results/
+runs/
+
+# Scratch
+scratch/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+src/figsmod.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environments
+.env
+venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# SLURM scripts (generated at runtime)
+*.sh
+
+# Temporary
+*.tmp
+*.swp

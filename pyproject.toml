@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "figsmod"
+version = "0.1.0"
+description = "FiGS-MoD: Feature-informed Gibbs Sampling for Motif Discovery"
+dependencies = [
+    "numpy",
+    "pandas",
+    "pomegranate==0.15.0",
+    "networkx",
+    "biopython",
+    "tqdm",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

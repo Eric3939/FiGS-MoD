@@ -43,7 +43,7 @@ for center in biogrid.nodes:
     if size < 10 or size > 200:
         continue
     
-    centers.append[center]
+    centers.append(center)
 
 
 # run and save
